@@ -25,7 +25,9 @@ app.use("/api/products", productRoute);
 app.use("/api/orders",orderRoute);
 app.use("/api/carts",cartRoute );
 app.use("/api/checkout",stripeRoute);
-
+app.use("/",(req,res)=>{
+    res.send("ello");
+})
 
 app.listen(5000,()=>{
     console.log("Backend server is running");
