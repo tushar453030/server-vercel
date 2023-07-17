@@ -65,7 +65,7 @@ router.get("/", async (req, res) => {
 
     if (qNew) {
       products = await Product.find().sort({ createdAt: -1 }).limit(1);
-      console.log(products);
+      
     } else if (qCategory) {
       products = await Product.find({
         categories: {
@@ -75,7 +75,7 @@ router.get("/", async (req, res) => {
     } else {
       products = await Product.find();
     }
-
+    res.send("We got products");
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);
