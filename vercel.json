@@ -4,12 +4,7 @@
     { "src": "index.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/auth/(.*)", "dest": "/api/auth/$1" },
-    { "src": "/api/users/(.*)", "dest": "/api/users/$1" },
-    { "src": "/api/products/(.*)", "dest": "/api/products/$1" },
-    { "src": "/api/orders/(.*)", "dest": "/api/orders/$1" },
-    { "src": "/api/carts/(.*)", "dest": "/api/carts/$1" },
-    { "src": "/api/checkout/(.*)", "dest": "/api/checkout/$1" },
+    { "src": "/api/(.*)", "dest": "index.js" },
     { "src": "/(.*)", "dest": "/" }
   ]
 }
