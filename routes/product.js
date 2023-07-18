@@ -77,7 +77,7 @@ router.get("/", async (req, res) => {
     }
     console.log("Hii its working");
     res.send("We got products");
-    res.send(products);
+    res.send.json(products);
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);
