@@ -75,6 +75,7 @@ router.get("/", async (req, res) => {
     } else {
       products = await Product.find();
     }
+    console.log("Hii its working");
     res.send("We got products");
     res.status(200).json(products);
   } catch (err) {
