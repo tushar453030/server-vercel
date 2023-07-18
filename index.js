@@ -29,7 +29,9 @@ app.use("/",(req,res)=>{
     res.send("ello");
 })
 
-app.listen(5000,()=>{
+const port = process.env.PORT || 3000;
+
+app.listen(port,"0.0.0.0",()=>{
     console.log("Backend server is running");
 
 })
