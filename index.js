@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log(err);
 });
 const corsOptions ={
-    origin:'http://localhost:5000', 
+    origin:'https://radiant-cassata-a46fa9.netlify.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200 
 }
