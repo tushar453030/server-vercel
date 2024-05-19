@@ -25,6 +25,10 @@ mongoose
 app.use(cors())
 app.use(express.json()) // By this we can able to pass JSON via body as req
 
+app.use('/', (req, res) => {
+  res.json('Hello its me ')
+})
+
 app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
 app.use('/api/products', productRoute)
