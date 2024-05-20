@@ -11,6 +11,7 @@ const orderRoute = require('./routes/order')
 const stripeRoute = require('./routes/stripe')
 const openAIRoutes = require('./routes/openAIRoutes')
 const googleGemini = require('./routes/googleGemini')
+const sendEmail = require('./routes/sendEmail')
 const cors = require('cors')
 
 mongoose
@@ -34,6 +35,8 @@ app.use('/api/checkout', stripeRoute)
 
 app.use('/api/compareOpenAI', openAIRoutes)
 app.use('/api/gimini', googleGemini)
+
+app.use('/api/email', sendEmail)
 
 app.listen(5000, () => {
   console.log('Backend server is running')
