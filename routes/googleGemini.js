@@ -3,10 +3,14 @@ const router = express.Router()
 const { GoogleGenerativeAI } = require('@google/generative-ai')
 const dotenv = require('dotenv')
 
+const { GoogleGenAI } = require('@google/genai')
+
 dotenv.config()
 
-// Configure Google Generative AI
 const gemini_api_key = process.env.GEMINI_API_KEY
+const ai = new GoogleGenAI({ apiKey: gemini_api_key })
+
+// Configure Google Generative AI
 
 const googleAI = new GoogleGenerativeAI(gemini_api_key)
 const geminiConfig = {
@@ -21,11 +25,8 @@ const geminiModel = googleAI.getGenerativeModel({
   generationConfig: geminiConfig,
 })
 
-
 router.post('/sendGemini', async (req, res) => {
   try {
-    console.log('Using model:', geminiModel.modelName);
-    console.log(gemini_api_key);
     const { products } = req.body
     console.log(products)
 
@@ -46,11 +47,15 @@ router.post('/sendGemini', async (req, res) => {
       Product 2: ${JSON.stringify(product2.desc)}
     `
 
-    const result = await geminiModel.generateContent(prompt)
+    //const result = await geminiModel.generateContent(prompt)
+    const result = await ai.models.generateContent({
+      model: 'gemini-2.0-flash',
+      contents: prompt,
+    })
 
-    const response = result.response
-
-    res.json({ comparison: response.text() })
+    const response = result.text
+    console.log(response)
+    res.json({ comparison: response })
   } catch (error) {
     console.error(error)
     res
