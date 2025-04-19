@@ -7,7 +7,7 @@ dotenv.config()
 
 // Configure Google Generative AI
 const gemini_api_key = process.env.GEMINI_API_KEY
-console.log(gemini_api_key);
+
 const googleAI = new GoogleGenerativeAI(gemini_api_key)
 const geminiConfig = {
   temperature: 0.9,
@@ -18,11 +18,14 @@ const geminiConfig = {
 
 const geminiModel = googleAI.getGenerativeModel({
   model: 'gemini-2.0-flash',
-  geminiConfig,
+  generationConfig: geminiConfig,
 })
+
 
 router.post('/sendGemini', async (req, res) => {
   try {
+    console.log('Using model:', geminiModel.modelName);
+    console.log(gemini_api_key);
     const { products } = req.body
     console.log(products)
 
