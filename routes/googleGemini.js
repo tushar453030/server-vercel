@@ -7,6 +7,7 @@ dotenv.config()
 
 // Configure Google Generative AI
 const gemini_api_key = process.env.GEMINI_API_KEY
+console.log(gemini_api_key);
 const googleAI = new GoogleGenerativeAI(gemini_api_key)
 const geminiConfig = {
   temperature: 0.9,
